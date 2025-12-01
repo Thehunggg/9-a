@@ -1,0 +1,62 @@
+c* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  background: #f2f3f5;
+}
+
+/* ===== 全体グリッド ===== */
+.container {
+  min-height: 100vh;
+  padding: 12px;
+
+  display: grid;
+
+  /* 3列 × 4行のグリッド */
+  grid-template-columns: 1fr 1fr 260px;
+  grid-template-rows: auto 1fr 1fr auto;
+
+  grid-template-areas:
+    "title title title"
+    "a1    a2    nav"
+    "a3    a4    nav"
+    "footer footer footer";
+
+  gap: 12px;
+}
+
+/* ===== 各要素の見た目 ===== */
+.title, .item, .nav, .footer {
+  background: #ffffff;
+  padding: 16px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  display: grid;
+  place-items: center;
+  font-weight: 600;
+}
+
+/* ===== グリッド配置 ===== */
+.title  { grid-area: title; }
+.a1     { grid-area: a1; }
+.a2     { grid-area: a2; }
+.a3     { grid-area: a3; }
+.a4     { grid-area: a4; }
+.nav    { grid-area: nav; }
+.footer { grid-area: footer; }
+
+/* ===== レスポンシブ（画面が狭いとき） ===== */
+@media (max-width: 700px) {
+  .container {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "title"
+      "a1"
+      "a2"
+      "a3"
+      "a4"
+      "nav"
+      "footer";
+  }
+}
